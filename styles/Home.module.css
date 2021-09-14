@@ -1,3 +1,12 @@
+.pt_home_wrapper {
+  background-color: #ececec;
+}
+.pt_home_container {
+  min-height: 100vh;
+  padding: 0.2rem 0.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
@@ -6,6 +15,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  border: 1px solid red
 }
 
 .main {
