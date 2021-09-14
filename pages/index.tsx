@@ -37,7 +37,7 @@ const daysList: Array<{
 }]
 const Home: NextPage = () => {
   const { data: days = []} = useSwr('home', () => getAllDays())
-  const daysMap = days.reduce((acc, curr) => {
+  const daysMap = days.reduce((acc: any, curr: any) => {
     return {
       ...acc,
       [curr.day]: curr

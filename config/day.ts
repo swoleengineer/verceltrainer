@@ -1,8 +1,8 @@
 import database from './database';
 
-export const getAllDays = () => database.days.toArray()
-export const getSingleDay = (day) => database.days.where('day').equalsIgnoreCase(day).toArray().then(
-  (returnedDay) => {
+export const getAllDays = () => (database as any).days.toArray()
+export const getSingleDay = (day: string) => (database as any).days.where('day').equalsIgnoreCase(day).toArray().then(
+  (returnedDay: any) => {
     if (!returnedDay[0]) {
       const newDay = {
         day,
@@ -13,4 +13,4 @@ export const getSingleDay = (day) => database.days.where('day').equalsIgnoreCase
     return returnedDay;
   }
 );
-export const editSingleDay = (updatedDay) => database.days.put(updatedDay);
+export const editSingleDay = (updatedDay: { [key: string]: any}) => (database as any).days.put(updatedDay);

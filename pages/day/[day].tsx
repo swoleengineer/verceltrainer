@@ -147,7 +147,7 @@ const ExerciseComponent = ({exercise, activity = [], updateActivity: setActivity
               size='small'
               placeholder='weight'
               value={item.weight}
-              onChange={e => setActivity(activity.map((x, index) => index === i ? {
+              onChange={e => setActivity(activity.map((x: any, index: number) => index === i ? {
                 ...x,
                 weight: e.target.value
               } : x))}
@@ -157,7 +157,7 @@ const ExerciseComponent = ({exercise, activity = [], updateActivity: setActivity
               size='small'
               placeholder='reps'
               value={item.reps}
-              onChange={e => setActivity(activity.map((x, index) => index === i ? {
+              onChange={e => setActivity(activity.map((x: any, index: number) => index === i ? {
                 ...x,
                 reps: e.target.value
               } : x))}
@@ -182,13 +182,13 @@ const DayComponent = () => {
     setDayData(dayObject[0]);
     form.setFieldsValue(dayObject[0]);
   }, [dayObject]);
-  const processForm = (values) => {
+  const processForm = (values: { [key: string]: any }) => {
     editSingleDay({ ...values, day, exercises: dayData?.exercises || [] }).then(
       (res: any) => {
         message.success('Updated');
         mutate();
       },
-      err => {
+      (err: Error) => {
         console.error(err);
         message.error('Error updating this Day')
       }
@@ -200,7 +200,7 @@ const DayComponent = () => {
         title={dayData?.title}
         subTitle={moment().format('MM/DD/YYYY')}
       >
-        {dayData?.exercises?.map((exercise: any,i)=> {
+        {dayData?.exercises?.map((exercise: any,i: number)=> {
           return (
             <ExerciseComponent
               exercise={exercise}
@@ -254,7 +254,7 @@ const DayComponent = () => {
         <List
           header='Exercises'
           dataSource={(dayData?.exercises || [])}
-          renderItem={(item, i) => {
+          renderItem={(item: any, i) => {
             return (
               <List.Item
                 key={item.name}
@@ -263,7 +263,7 @@ const DayComponent = () => {
                     size='small'
                     onClick={() => setDayData({
                       ...(dayData || {}),
-                      exercises: (dayData?.exercises || []).filter(({ name }) => name !== item.name)
+                      exercises: (dayData?.exercises || []).filter(({ name }: any) => name !== item.name)
                     })}
                     shape='round'
                   >
